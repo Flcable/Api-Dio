@@ -8,9 +8,9 @@ using MongoDB.Driver;
 namespace Api.Data
 {
 
-    public class MongoDB 
+    public class MongoDB
     {
-        public IMongoDatabase DB  {get;}
+        public IMongoDatabase DB { get; }
 
         public MongoDB(IConfiguration configuration)
         {
@@ -29,7 +29,7 @@ namespace Api.Data
 
         private void MapClasses()
         {
-            var conventionPack = new  ConventionPack {new CamelCaseElementNameConvention()};
+            var conventionPack = new ConventionPack { new CamelCaseElementNameConvention() };
             ConventionRegistry.Register("camelCase", conventionPack, t => true);
 
             if (!BsonClassMap.IsClassMapRegistered(typeof(Infectado)))
@@ -39,9 +39,7 @@ namespace Api.Data
                     i.AutoMap();
                     i.SetIgnoreExtraElements(true);
                 });
-                
             }
-
         }
     }
 }
