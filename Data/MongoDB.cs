@@ -7,8 +7,7 @@ using MongoDB.Driver;
 
 namespace Api.Data
 {
-
-    public class MongoDB
+ public class MongoDB
     {
         public IMongoDatabase DB { get; }
 
@@ -16,7 +15,7 @@ namespace Api.Data
         {
             try
             {
-                var settings = MongoClientSettings.FromUrl(new MongoUrl(configuration["ConnectionString"]));
+                var settings = MongoClientSettings.FromUrl(new MongoUrl(configuration["ConnectionStrings"]));
                 var client = new MongoClient(settings);
                 DB = client.GetDatabase(configuration["NomeBanco"]);
                 MapClasses();
